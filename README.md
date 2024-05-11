@@ -21,4 +21,4 @@ Eureka endpoints:
 2. MS main class -> add @EnableFeignClients
 3. client MS -> create @FeignClient interface + 
 4. client MS -> create backing service DTO, CustomerController, CustomerDetailsDto, ICustomerService, 
-CustomerServiceImpl (where we use the feign clients to load information from other MS)
+   CustomerServiceImpl (where we use the feign clients to load information from other MS)
