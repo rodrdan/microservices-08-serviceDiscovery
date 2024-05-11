@@ -55,12 +55,10 @@ public class CardController {
 
     @Operation(
             summary = "Create Card REST API",
-            description = "REST API to create a new Card in EazyBank"
-    )
+            description = "REST API to create a new Card in EazyBank")
     @ApiResponse(
             responseCode = "201",
-            description = "HTTP Status CREATED"
-    )
+            description = "HTTP Status CREATED")
     @PostMapping("/create")
     public ResponseEntity<ResponseDto> createCard(
             @RequestParam
@@ -74,12 +72,10 @@ public class CardController {
 
     @Operation(
             summary = "Get Card details REST API",
-            description = "REST API to get details of existing Card"
-    )
+            description = "REST API to get details of existing Card")
     @ApiResponse(
             responseCode = "200",
-            description = "HTTP Status OK"
-    )
+            description = "HTTP Status OK")
     @GetMapping("/fetch")
     public ResponseEntity<CardDto> getCardDetails(
             @RequestParam
@@ -92,26 +88,18 @@ public class CardController {
     }
     @Operation(
             summary = "Update Card REST API",
-            description = "REST API to update existing Card"
-    )
-    @ApiResponses({
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "HTTP Status OK"
-            ),
-            @ApiResponse(
-                    responseCode = "417",
-                    description = "HTTP Status EXPECTATION_FAILED"
-            ),
-            @ApiResponse(
-                    responseCode = "500",
-                    description = "HTTP Status INTERNAL_SERVER_ERROR",
-                    content = @Content(
-                            schema = @Schema(implementation = ErrorResponseDto.class)
-                    )
-            )
-    })
-
+            description = "REST API to update existing Card")
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status OK")
+    @ApiResponse(
+            responseCode = "417",
+            description = "HTTP Status EXPECTATION_FAILED")
+    @ApiResponse(
+            responseCode = "500",
+            description = "HTTP Status INTERNAL_SERVER_ERROR",
+            content = @Content(
+                    schema = @Schema(implementation = ErrorResponseDto.class)))
     @PutMapping("/update")
     public ResponseEntity<ResponseDto> updateCard(@Valid @RequestBody CardDto cardDto) {
         boolean cardUpdated = iCardService.updateCard(cardDto);
@@ -127,25 +115,18 @@ public class CardController {
     }
     @Operation(
             summary = "Delete Card REST API",
-            description = "REST API to delete existing Card"
-    )
-    @ApiResponses({
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "HTTP Status OK"
-            ),
-            @ApiResponse(
-                    responseCode = "417",
-                    description = "HTTP Status EXPECTATION_FAILED"
-            ),
-            @ApiResponse(
-                    responseCode = "500",
-                    description = "HTTP Status INTERNAL_SERVER_ERROR",
-                    content = @Content(
-                            schema = @Schema(implementation = ErrorResponseDto.class)
-                    )
-            )
-    })
+            description = "REST API to delete existing Card")
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status OK")
+    @ApiResponse(
+            responseCode = "417",
+            description = "HTTP Status EXPECTATION_FAILED")
+    @ApiResponse(
+            responseCode = "500",
+            description = "HTTP Status INTERNAL_SERVER_ERROR",
+            content = @Content(
+                    schema = @Schema(implementation = ErrorResponseDto.class)))
     @DeleteMapping("/delete")
     public ResponseEntity<ResponseDto> deleteCard(
             @RequestParam
@@ -168,19 +149,14 @@ public class CardController {
             summary = "Get build information REST API",
             description = "REST API to get build information that is deployed into cards microservice"
     )
-    @ApiResponses({
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "HTTP Status OK"
-            ),
-            @ApiResponse(
-                    responseCode = "500",
-                    description = "HTTP Status Internal Server Error",
-                    content = @Content(
-                            schema = @Schema(implementation = ErrorResponseDto.class)
-                    )
-            )}
-    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status OK")
+    @ApiResponse(
+            responseCode = "500",
+            description = "HTTP Status Internal Server Error",
+            content = @Content(
+                    schema = @Schema(implementation = ErrorResponseDto.class)))
     @GetMapping("/build-info")
     public ResponseEntity<String> getBuildInfo() {
         return ResponseEntity
@@ -191,21 +167,15 @@ public class CardController {
     // reading properties using Environment interface field (from local environment variables)
     @Operation(
             summary = "Get Java version REST API",
-            description = "REST API to get Java version that is installed into cards microservice"
-    )
-    @ApiResponses({
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "HTTP Status OK"
-            ),
-            @ApiResponse(
-                    responseCode = "500",
-                    description = "HTTP Status Internal Server Error",
-                    content = @Content(
-                            schema = @Schema(implementation = ErrorResponseDto.class)
-                    )
-            )}
-    )
+            description = "REST API to get Java version that is installed into cards microservice")
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status OK")
+    @ApiResponse(
+            responseCode = "500",
+            description = "HTTP Status Internal Server Error",
+            content = @Content(
+                    schema = @Schema(implementation = ErrorResponseDto.class)))
     @GetMapping("/java-version")
     public ResponseEntity<String> getJavaVersion() {
         return ResponseEntity
@@ -216,21 +186,15 @@ public class CardController {
     // reading properties using @ConfigurationProperties annotation (from application.yml + AccountsContactInfoDto class)
     @Operation(
             summary = "Get contact info REST API",
-            description = "REST API to get contact on cards microservice developer"
-    )
-    @ApiResponses({
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "HTTP Status OK"
-            ),
-            @ApiResponse(
-                    responseCode = "500",
-                    description = "HTTP Status Internal Server Error",
-                    content = @Content(
-                            schema = @Schema(implementation = ErrorResponseDto.class)
-                    )
-            )}
-    )
+            description = "REST API to get contact on cards microservice developer")
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status OK")
+    @ApiResponse(
+            responseCode = "500",
+            description = "HTTP Status Internal Server Error",
+            content = @Content(
+                    schema = @Schema(implementation = ErrorResponseDto.class)))
     @GetMapping("/contact-info")
     public ResponseEntity<CardContactInfoDto> getContactInfo() {
         return ResponseEntity

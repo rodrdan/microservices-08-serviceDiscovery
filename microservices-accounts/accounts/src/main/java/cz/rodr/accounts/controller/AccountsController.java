@@ -55,12 +55,10 @@ public class AccountsController {
 
     @Operation(
             summary = "Create account REST API",
-            description = "REST API to create new Customer & Account in EazyBank"
-    )
+            description = "REST API to create new Customer & Account in EazyBank")
     @ApiResponse(
             responseCode = "201",
-            description = "HTTP Status CREATED"
-    )
+            description = "HTTP Status CREATED")
     @PostMapping("/create")
     public ResponseEntity<ResponseDto> createAccount(@Valid @RequestBody CustomerDto customerDto) {
         iAccountsService.createAccount(customerDto);
@@ -70,12 +68,10 @@ public class AccountsController {
     }
     @Operation(
             summary = "Get account details REST API",
-            description = "REST API to get details of a Customer & Account in EazyBank"
-    )
+            description = "REST API to get details of a Customer & Account in EazyBank")
     @ApiResponse(
             responseCode = "200",
-            description = "HTTP Status OK"
-    )
+            description = "HTTP Status OK")
     @GetMapping("/fetch")
     public ResponseEntity<CustomerDto> fetchAccountDetails(
             @RequestParam
@@ -86,25 +82,18 @@ public class AccountsController {
     }
     @Operation(
             summary = "Update account REST API",
-            description = "REST API to update a Customer & Account in EazyBank"
-    )
-    @ApiResponses({
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "HTTP Status OK"
-            ),
-            @ApiResponse(
-                    responseCode = "417",
-                    description = "Expectation failed"
-            ),
-            @ApiResponse(
-                    responseCode = "500",
-                    description = "HTTP Status Internal Server Error",
-                    content = @Content(
-                            schema = @Schema(implementation = ErrorResponseDto.class)
-                    )
-            )}
-    )
+            description = "REST API to update a Customer & Account in EazyBank")
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status OK")
+    @ApiResponse(
+            responseCode = "417",
+            description = "Expectation failed")
+    @ApiResponse(
+            responseCode = "500",
+            description = "HTTP Status Internal Server Error",
+            content = @Content(
+                    schema = @Schema(implementation = ErrorResponseDto.class)))
     @PutMapping("/update")
     public ResponseEntity<ResponseDto> updateAccountDetails(@Valid @RequestBody CustomerDto customerDto) {
         boolean isUpdated = iAccountsService.updateAccount(customerDto);
@@ -120,22 +109,16 @@ public class AccountsController {
     }
     @Operation(
             summary = "Delete account REST API",
-            description = "REST API to delete a Customer & Account in EazyBank"
-    )
-    @ApiResponses({
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "HTTP Status OK"
-            ),
-            @ApiResponse(
-                    responseCode = "417",
-                    description = "Expectation failed"
-            ),
-            @ApiResponse(
+            description = "REST API to delete a Customer & Account in EazyBank")
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status OK")
+    @ApiResponse(
+            responseCode = "417",
+            description = "Expectation failed")
+    @ApiResponse(
                     responseCode = "500",
-                    description = "HTTP Status Internal Server Error"
-            )}
-    )
+                    description = "HTTP Status Internal Server Error")
     @DeleteMapping("/delete")
     public ResponseEntity<ResponseDto> deleteAccount(
             @RequestParam
@@ -156,21 +139,15 @@ public class AccountsController {
     // reading properties using @Value annotated field (from application.yml)
     @Operation(
             summary = "Get build information REST API",
-            description = "REST API to get build information that is deployed into accounts microservice"
-    )
-    @ApiResponses({
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "HTTP Status OK"
-            ),
-            @ApiResponse(
-                    responseCode = "500",
-                    description = "HTTP Status Internal Server Error",
-                    content = @Content(
-                            schema = @Schema(implementation = ErrorResponseDto.class)
-                    )
-            )}
-    )
+            description = "REST API to get build information that is deployed into accounts microservice")
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status OK")
+    @ApiResponse(
+            responseCode = "500",
+            description = "HTTP Status Internal Server Error",
+            content = @Content(
+                    schema = @Schema(implementation = ErrorResponseDto.class)))
     @GetMapping("/build-info")
     public ResponseEntity<String> getBuildInfo() {
         return ResponseEntity
@@ -182,21 +159,15 @@ public class AccountsController {
     // reading properties using Environment interface field (from local environment variables)
     @Operation(
             summary = "Get Java version REST API",
-            description = "REST API to get Java version that is installed into accounts microservice"
-    )
-    @ApiResponses({
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "HTTP Status OK"
-            ),
-            @ApiResponse(
-                    responseCode = "500",
-                    description = "HTTP Status Internal Server Error",
-                    content = @Content(
-                            schema = @Schema(implementation = ErrorResponseDto.class)
-                    )
-            )}
-    )
+            description = "REST API to get Java version that is installed into accounts microservice")
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status OK")
+    @ApiResponse(
+            responseCode = "500",
+            description = "HTTP Status Internal Server Error",
+            content = @Content(
+                    schema = @Schema(implementation = ErrorResponseDto.class)))
     @GetMapping("/java-version")
     public ResponseEntity<String> getJavaVersion() {
         return ResponseEntity
@@ -207,21 +178,15 @@ public class AccountsController {
     // reading properties using @ConfigurationProperties annotation (from application.yml + AccountsContactInfoDto class)
     @Operation(
             summary = "Get contact info REST API",
-            description = "REST API to get contact on accounts microservice developer"
-    )
-    @ApiResponses({
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "HTTP Status OK"
-            ),
-            @ApiResponse(
-                    responseCode = "500",
-                    description = "HTTP Status Internal Server Error",
-                    content = @Content(
-                            schema = @Schema(implementation = ErrorResponseDto.class)
-                    )
-            )}
-    )
+            description = "REST API to get contact on accounts microservice developer")
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status OK")
+    @ApiResponse(
+            responseCode = "500",
+            description = "HTTP Status Internal Server Error",
+            content = @Content(
+                    schema = @Schema(implementation = ErrorResponseDto.class)))
     @GetMapping("/contact-info")
     public ResponseEntity<AccountsContactInfoDto> getContactInfo() {
         return ResponseEntity

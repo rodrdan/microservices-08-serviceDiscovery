@@ -55,12 +55,10 @@ public class LoanController {
 
     @Operation(
             summary = "Create Loan REST API",
-            description = "REST API to create new Loan in EazyBank"
-    )
+            description = "REST API to create new Loan in EazyBank")
     @ApiResponse(
             responseCode = "201",
-            description = "HTTP Status CREATED"
-    )
+            description = "HTTP Status CREATED")
     @PostMapping("/create")
     public ResponseEntity<ResponseDto> createLoan(
             @Valid
@@ -75,12 +73,10 @@ public class LoanController {
 
     @Operation(
             summary = "Get loan details REST API",
-            description = "REST API to get details of a Loan in EazyBank"
-    )
+            description = "REST API to get details of a Loan in EazyBank")
     @ApiResponse(
             responseCode = "200",
-            description = "HTTP Status OK"
-    )
+            description = "HTTP Status OK")
     @GetMapping("/fetch")
     public ResponseEntity<LoanDto> getLoanDetails(
             @Valid
@@ -95,25 +91,18 @@ public class LoanController {
 
     @Operation(
             summary = "Update loan REST API",
-            description = "REST API to update a loan in EazyBank"
-    )
-    @ApiResponses({
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "HTTP Status OK"
-            ),
-            @ApiResponse(
-                    responseCode = "417",
-                    description = "Expectation failed"
-            ),
-            @ApiResponse(
-                    responseCode = "500",
-                    description = "HTTP Status Internal Server Error",
-                    content = @Content(
-                            schema = @Schema(implementation = ErrorResponseDto.class)
-                    )
-            )}
-    )
+            description = "REST API to update a loan in EazyBank")
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status OK")
+    @ApiResponse(
+            responseCode = "417",
+            description = "Expectation failed")
+    @ApiResponse(
+            responseCode = "500",
+            description = "HTTP Status Internal Server Error",
+            content = @Content(
+                    schema = @Schema(implementation = ErrorResponseDto.class)))
     @PutMapping("/update")
     public ResponseEntity<ResponseDto> updateLoan(@Valid @RequestBody LoanDto loanDto) {
         boolean isUpdated = loanService.updateLoan(loanDto);
@@ -130,22 +119,16 @@ public class LoanController {
 
     @Operation(
             summary = "Delete loan REST API",
-            description = "REST API to delete a loan in EazyBank"
-    )
-    @ApiResponses({
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "HTTP Status OK"
-            ),
-            @ApiResponse(
-                    responseCode = "417",
-                    description = "Expectation failed"
-            ),
-            @ApiResponse(
-                    responseCode = "500",
-                    description = "HTTP Status Internal Server Error"
-            )}
-    )
+            description = "REST API to delete a loan in EazyBank")
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status OK")
+    @ApiResponse(
+            responseCode = "417",
+            description = "Expectation failed")
+    @ApiResponse(
+            responseCode = "500",
+            description = "HTTP Status Internal Server Error")
     @DeleteMapping("/delete")
     public ResponseEntity<ResponseDto> deleteLoan(
             @Valid
@@ -167,21 +150,15 @@ public class LoanController {
     // reading properties using @Value annotated field (from application.yml)
     @Operation(
             summary = "Get build information REST API",
-            description = "REST API to get build information that is deployed into loans microservice"
-    )
-    @ApiResponses({
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "HTTP Status OK"
-            ),
-            @ApiResponse(
-                    responseCode = "500",
-                    description = "HTTP Status Internal Server Error",
-                    content = @Content(
-                            schema = @Schema(implementation = ErrorResponseDto.class)
-                    )
-            )}
-    )
+            description = "REST API to get build information that is deployed into loans microservice")
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status OK")
+    @ApiResponse(
+            responseCode = "500",
+            description = "HTTP Status Internal Server Error",
+            content = @Content(
+                    schema = @Schema(implementation = ErrorResponseDto.class)))
     @GetMapping("/build-info")
     public ResponseEntity<String> getBuildInfo() {
         return ResponseEntity
@@ -192,21 +169,15 @@ public class LoanController {
     // reading properties using Environment interface field (from local environment variables)
     @Operation(
             summary = "Get Java version REST API",
-            description = "REST API to get Java version that is installed into loans microservice"
-    )
-    @ApiResponses({
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "HTTP Status OK"
-            ),
-            @ApiResponse(
-                    responseCode = "500",
-                    description = "HTTP Status Internal Server Error",
-                    content = @Content(
-                            schema = @Schema(implementation = ErrorResponseDto.class)
-                    )
-            )}
-    )
+            description = "REST API to get Java version that is installed into loans microservice")
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status OK")
+    @ApiResponse(
+            responseCode = "500",
+            description = "HTTP Status Internal Server Error",
+            content = @Content(
+                    schema = @Schema(implementation = ErrorResponseDto.class)))
     @GetMapping("/java-version")
     public ResponseEntity<String> getJavaVersion() {
         return ResponseEntity
@@ -217,27 +188,19 @@ public class LoanController {
     // reading properties using @ConfigurationProperties annotation (from application.yml + AccountsContactInfoDto class)
     @Operation(
             summary = "Get contact info REST API",
-            description = "REST API to get contact on loans microservice developer"
-    )
-    @ApiResponses({
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "HTTP Status OK"
-            ),
-            @ApiResponse(
-                    responseCode = "500",
-                    description = "HTTP Status Internal Server Error",
-                    content = @Content(
-                            schema = @Schema(implementation = ErrorResponseDto.class)
-                    )
-            )}
-    )
+            description = "REST API to get contact on loans microservice developer")
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status OK")
+    @ApiResponse(
+            responseCode = "500",
+            description = "HTTP Status Internal Server Error",
+            content = @Content(
+                    schema = @Schema(implementation = ErrorResponseDto.class)))
     @GetMapping("/contact-info")
     public ResponseEntity<LoanContactInfoDto> getContactInfo() {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(loanContactInfoDto);
     }
-
-
 }
