@@ -6,3 +6,5 @@ Adding service discovery
 4. application.yml -> add Eureka server basic properties
 5. config-server -> add eurekaserver.yml with another set of properties
 6. Start config-server + eureka-server, see eureka dashboard on http://localhost:8070/
+7. MS pom.xml -> add Eureka client dependency
+8. MS application.yml -> add Eureka connection properties + info
